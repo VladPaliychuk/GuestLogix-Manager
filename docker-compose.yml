@@ -1,0 +1,22 @@
+version: '3.4'
+# docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
+services:
+  cardboarddb:
+    image: mongo
+  
+  basketdb:
+    image: redis
+
+  cardboard.api:
+    image: ${DOCKER_REGISTRY-}cardboardapi
+    build:
+      context: .
+      dockerfile: Services\CardBoard\CardBoard.API\Dockerfile
+
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Services\Basket\Basket.API\Dockerfile
+

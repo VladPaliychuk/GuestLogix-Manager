@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E1305485-89CB-42E7-8A46-2362EBA827CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{1CA96B60-B2BE-43CB-B055-6DDE92E06216}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{15A8AC75-B75A-45CB-A738-EC47E558B6E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CardBoard", "CardBoard", "{CEC3F72A-521B-41FB-9922-4BA39F7DD7BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardBoard.API", "Services\CardBoard\CardBoard.API\CardBoard.API.csproj", "{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardBoard.BLL", "Services\CardBoard\CardBoard.BLL\CardBoard.BLL.csproj", "{6375FDC7-F9A2-417A-B97C-32EF2A94C07D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardBoard.DAL", "Services\CardBoard\CardBoard.DAL\CardBoard.DAL.csproj", "{C03947DD-7CC3-4E0A-8BA9-6719F6281289}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{23DCE7A9-1BC3-4287-B27B-3950850A02DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotAPIGateway", "..\OcelotAPIGateway\OcelotAPIGateway.csproj", "{46C487B4-C287-4F64-8402-5351D5CC4657}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6375FDC7-F9A2-417A-B97C-32EF2A94C07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6375FDC7-F9A2-417A-B97C-32EF2A94C07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6375FDC7-F9A2-417A-B97C-32EF2A94C07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6375FDC7-F9A2-417A-B97C-32EF2A94C07D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03947DD-7CC3-4E0A-8BA9-6719F6281289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03947DD-7CC3-4E0A-8BA9-6719F6281289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03947DD-7CC3-4E0A-8BA9-6719F6281289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03947DD-7CC3-4E0A-8BA9-6719F6281289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23DCE7A9-1BC3-4287-B27B-3950850A02DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23DCE7A9-1BC3-4287-B27B-3950850A02DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23DCE7A9-1BC3-4287-B27B-3950850A02DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23DCE7A9-1BC3-4287-B27B-3950850A02DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C487B4-C287-4F64-8402-5351D5CC4657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C487B4-C287-4F64-8402-5351D5CC4657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C487B4-C287-4F64-8402-5351D5CC4657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C487B4-C287-4F64-8402-5351D5CC4657}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15A8AC75-B75A-45CB-A738-EC47E558B6E6} = {E1305485-89CB-42E7-8A46-2362EBA827CD}
+		{CEC3F72A-521B-41FB-9922-4BA39F7DD7BD} = {E1305485-89CB-42E7-8A46-2362EBA827CD}
+		{8FC3C54F-9AC8-4650-BA58-8BC3B8E77300} = {15A8AC75-B75A-45CB-A738-EC47E558B6E6}
+		{A0EE7CCA-18B2-4562-AE6B-5D2D8928ADCE} = {CEC3F72A-521B-41FB-9922-4BA39F7DD7BD}
+		{6375FDC7-F9A2-417A-B97C-32EF2A94C07D} = {CEC3F72A-521B-41FB-9922-4BA39F7DD7BD}
+		{C03947DD-7CC3-4E0A-8BA9-6719F6281289} = {CEC3F72A-521B-41FB-9922-4BA39F7DD7BD}
+		{46C487B4-C287-4F64-8402-5351D5CC4657} = {1CA96B60-B2BE-43CB-B055-6DDE92E06216}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {108726D2-A2AE-400B-B28D-16A128739FB4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  cardboarddb:
+    container_name: cardboarddb
+    restart: always
+    volumes:
+        - ${WEBAPP_STORAGE_HOME}/site:/data/db
+    ports:
+        - "27017:27017"
+  
+  basketdb:
+    container_name: basketdb
+    restart: always    
+    ports:
+        - "6379:6379"
+
+  basket.api:
+    container_name: basketapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings:ConnectionString=basketdb:6379"
+      #- "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:80"
+
+  cardboard.api:
+    container_name: cardboardapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://cardboarddb:27017"
+    depends_on:
+      - cardboarddb
+    volumes:
+      - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+      - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    ports:
+      - "8000:80"
+
