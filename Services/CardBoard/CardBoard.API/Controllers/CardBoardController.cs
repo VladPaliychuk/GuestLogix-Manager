@@ -7,13 +7,13 @@ namespace CardBoard.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class CardController : ControllerBase
+    public class CardBoardController : ControllerBase
     {
         private readonly ICardRepository _repository;
-        private readonly ILogger<CardController> _logger;
+        private readonly ILogger<CardBoardController> _logger;
 
-        public CardController(ICardRepository repository, 
-                ILogger<CardController> logger)
+        public CardBoardController(ICardRepository repository, 
+                ILogger<CardBoardController> logger)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -27,7 +27,7 @@ namespace CardBoard.API.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{id:length(24)}", Name = "GetCard")]
+        [HttpGet("{id:length(24)}", Name = "GetCardByIdAsync")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Card), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Card>> GetCardByIdAsync(string id)

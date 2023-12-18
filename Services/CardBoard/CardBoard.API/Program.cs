@@ -1,12 +1,16 @@
+using CardBoard.API;
 using CardBoard.BLL.Interfaces.IRepositories;
 using CardBoard.BLL.Repositories;
 using CardBoard.DAL.Data;
 using CardBoard.DAL.Interfaces;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.Configure<DatabaseSetting>(builder.Configuration.GetSection("DatabaseSettings"));
 
 builder.Services.AddControllers();
 
@@ -16,6 +20,7 @@ builder.Services.AddSwaggerGen(
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "CardBoard.API", Version = "v1" }); 
     }
 );
+//builder.Services.AddHealthChecks().AddMongoDb(builder.Configuration["DatabaseSettings:ConnectionString"], "MongoDb Health", HealthStatus.Degraded);
 
 #region Dependencies
 builder.Services.AddScoped<ICardBoardContext, CardBoardContext>();
@@ -27,6 +32,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(
         c => { 
@@ -35,8 +41,18 @@ if (app.Environment.IsDevelopment())
     );
 }
 
+app.UseRouting();
+
 app.UseAuthorization();
 
-app.MapControllers();
+/*app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
+});*/
 
 app.Run();

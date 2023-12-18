@@ -9,6 +9,7 @@ namespace CardBoard.DAL.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = null!;
         public int Number { get; set; }
+        public string UserName { get; set; } = null!;
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public string MiddleName { get; set; } = null!;

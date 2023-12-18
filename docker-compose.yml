@@ -1,5 +1,7 @@
 version: '3.4'
 # docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
+# discount http://localhost:8002/swagger/index.html
+
 services:
   cardboarddb:
     image: mongo
@@ -7,16 +9,50 @@ services:
   basketdb:
     image: redis
 
+  discountdb: 
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+  catalogdb:
+    image: mongo
+
   cardboard.api:
     image: ${DOCKER_REGISTRY-}cardboardapi
     build:
       context: .
       dockerfile: Services\CardBoard\CardBoard.API\Dockerfile
-
-
+      
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
       dockerfile: Services\Basket\Basket.API\Dockerfile
+
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
+    build:
+      context: .
+      dockerfile: Services\Discount\Discount.API\Dockerfile
+
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: ApiGateways\OcelotAPIGateway\Dockerfile
+
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalogapi
+    build:
+      context: .
+      dockerfile: Services\Catalog\Catalog.API\Dockerfile
+
+volumes:
+ portainer_data:
+ postgres_data:
+ pgadmin_data:
+
+
+
 

@@ -5,15 +5,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>C:\\Users\Asus\Documents\1000$\ООП\GuestLogix Manager\docker-compose.dcproj</DockerComposeProjectPath>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.13" />
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="7.1.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
+    <PackageReference Include="Dapper" Version="2.1.24" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Npgsql" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
