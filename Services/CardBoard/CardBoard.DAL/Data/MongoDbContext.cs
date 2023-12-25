@@ -7,14 +7,17 @@ namespace CardBoard.DAL.Data
 {
     public class CardBoardContext : ICardBoardContext
     {
+        private readonly IMongoDatabase _database;
+        private readonly IMongoCollection<Card> _collection;
         public CardBoardContext(IConfiguration configuration)
         {
             var client = new MongoClient(configuration.GetConnectionString("mongodb://localhost:27017"));
-            var database = client.GetDatabase("CardBoardDb");
+            var _database = client.GetDatabase("CardBoardDb");
 
-            Cards = database.GetCollection<Card>("Cards");
-            CardBoardSeed.SeedData(Cards);
+            _collection = _database.GetCollection<Card>("card");
+            CardBoardSeed.SeedData(_collection);
         }
-        public IMongoCollection<Card> Cards { get; }
+        public IMongoDatabase Database => _database;
+        public IMongoCollection<Card> Cards => _collection;
     }
 }

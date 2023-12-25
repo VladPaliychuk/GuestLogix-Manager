@@ -7,7 +7,9 @@
         "basket.api": "StartDebugging",
         "cardboard.api": "StartDebugging",
         "ocelotapigateway": "StartDebugging",
-        "catalog.api": "StartDebugging"
+        "catalog.api": "StartDebugging",
+        "basketproducts.api": "StartDebugging",
+        "basketcards.api": "StartDebugging"
       }
     }
   }

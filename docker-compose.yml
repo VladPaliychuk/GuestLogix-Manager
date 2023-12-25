@@ -1,12 +1,22 @@
 version: '3.4'
 # docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
-# discount http://localhost:8002/swagger/index.html
+# docker-compose up -d
+# Cardboard
+# http://localhost:8000/swagger/index.html
+# BasketCards
+# http://localhost:8001/swagger/index.html
+# Discount
+# http://localhost:8002/swagger/index.html
+# Catalog
+# http://localhost:8004/swagger/index.html
+# BasketProducts
+# http://localhost:8005/swagger/index.html
 
 services:
   cardboarddb:
     image: mongo
   
-  basketdb:
+  basketcardsdb:
     image: redis
 
   discountdb: 
@@ -18,17 +28,14 @@ services:
   catalogdb:
     image: mongo
 
+  basketproductsdb:
+    image: mongo
+
   cardboard.api:
     image: ${DOCKER_REGISTRY-}cardboardapi
     build:
       context: .
       dockerfile: Services\CardBoard\CardBoard.API\Dockerfile
-      
-  basket.api:
-    image: ${DOCKER_REGISTRY-}basketapi
-    build:
-      context: .
-      dockerfile: Services\Basket\Basket.API\Dockerfile
 
   discount.api:
     image: ${DOCKER_REGISTRY-}discountapi
@@ -48,11 +55,20 @@ services:
       context: .
       dockerfile: Services\Catalog\Catalog.API\Dockerfile
 
+  basketproducts.api:
+    image: ${DOCKER_REGISTRY-}basketproductsapi
+    build:
+      context: .
+      dockerfile: Services\BasketProducts\BasketProducts.API\Dockerfile
+
+  basketcards.api:
+    image: ${DOCKER_REGISTRY-}basketcardsapi
+    build:
+      context: .
+      dockerfile: Services\BasketCards\Basket.API\Dockerfile
+
 volumes:
+ mongo_data:
  portainer_data:
  postgres_data:
  pgadmin_data:
-
-
-
-

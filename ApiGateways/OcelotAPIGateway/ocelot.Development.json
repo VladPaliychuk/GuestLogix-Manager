@@ -40,27 +40,27 @@
     },
     //Basket API
     {
-      "DownstreamPathTemplate": "/api/v1/Basket/{userName}, {role}",
+      "DownstreamPathTemplate": "/api/v1/BasketCards/{userName}, {role}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basket.api",
+          "Host": "basketcards.api",
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Basket/{userName}, {role}",
+      "UpstreamPathTemplate": "/BasketCards/{userName}, {role}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Basket",
+      "DownstreamPathTemplate": "/api/v1/BasketCards",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basket.api",
+          "Host": "basketcards.api",
           "Port": "80"
         }
       ],
-      "UpstreamPathTemplate": "/Basket",
+      "UpstreamPathTemplate": "/BasketCards",
       "UpstreamHttpMethod": [ "POST" ]
     },
     //{

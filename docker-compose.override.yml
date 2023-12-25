@@ -13,15 +13,23 @@ services:
     container_name: catalogdb
     restart: always
     volumes:
-        - ${WEBAPP_STORAGE_HOME}/site:/data/db
+        - ${WEBAPP_STORAGE_HOME}/site_catalogdb:/data/db
     ports:
-        - "27017:27017"
+        - "27018:27017"
   
-  basketdb:
-    container_name: basketdb
+  basketcardsdb:
+    container_name: basketcardsdb
     restart: always    
     ports:
         - "6379:6379"
+  
+  basketproductsdb:
+    container_name: basketproductsdb
+    restart: always
+    ports:
+        - "27019:27017"
+    volumes:
+        - mongo_data:/data/db
 
   pgadmin:
     container_name: pgadmin
@@ -46,14 +54,14 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
-  basket.api:
-    container_name: basketapi
+  basketcards.api:
+    container_name: basketcardsapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings:ConnectionString=basketdb:6379"
       #- "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
-      - basketdb
+      - basketcardsdb
     ports:
       - "8001:80"
 
@@ -88,7 +96,7 @@ services:
       - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     depends_on:
         - cardboard.api
-        - basket.api
+        - basketcards.api
         - discount.api
     #    - ordering.api
     ports:
@@ -107,4 +115,18 @@ services:
       - catalogdb
     ports:
       - "8004:80"
+
+  basketproducts.api:
+    container_name: basketproductsapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://basketproductsdb:27019"
+     # - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    volumes:
+      - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+      - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    depends_on:
+        - basketproductsdb
+    ports:
+        - "8005:80"
 

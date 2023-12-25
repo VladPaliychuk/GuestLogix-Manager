@@ -50,6 +50,7 @@ namespace CardBoard.BLL.Repositories
         }
         public async Task AddAsync(Card card)
         {
+            card.Id= Guid.NewGuid().ToString();
             await _context.Cards.InsertOneAsync(card);
         }
         public async Task<bool> UpdateAsync(Card card)
